@@ -5,7 +5,7 @@ Docs: https://github.com/G103L3/epstein-files-api
 
 import requests
 
-API_KEY  = "your_api_key_here"   # get one free: POST ?action=register
+API_KEY  = "your_api_key_here"   # get one: create an account at exposingepstein.com → Profile → Developer Account
 BASE_URL = "https://exposingepstein.com/backend/api/api_public.php"
 HEADERS  = {"X-Api-Key": API_KEY}
 

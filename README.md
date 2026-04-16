@@ -45,19 +45,22 @@ So here it is.
 https://exposingepstein.com/backend/api/api_public.php
 ```
 
+## Getting an API Key
+
+API keys are tied to verified developer accounts. The process is straightforward:
+
+1. **Create a free account** at [exposingepstein.com](https://exposingepstein.com) — no email required for a standard account.
+2. **Go to Profile → Settings → Developer Account** and click **Apply for Developer Account**.
+3. Fill in the required details: contact email, name, and address. These are used only for account verification and are never shared publicly.
+4. **Verify your email** — a confirmation link will be sent to the address you provided. Click it to activate your developer account.
+5. Once verified, a **Developer Portal** button appears in the app sidebar (desktop) and mobile UI.
+6. Open the **Developer Portal** and click **Generate API Key**. You can have up to 10 active keys.
+
+API keys are free. No credit card. No paywall.
+
 ## Authentication
 
-All endpoints except `register` require a free API key.
-
-Get yours in seconds:
-
-```bash
-curl -s -X POST "https://exposingepstein.com/backend/api/api_public.php?action=register" \
-  -H "Content-Type: application/json" \
-  -d '{"app_name": "my-app", "email": "you@example.com"}'
-```
-
-Pass your key on every request via header (recommended) or query param:
+Pass your key on every request via the `X-Api-Key` header (recommended) or as a query parameter:
 
 ```
 X-Api-Key: your_api_key_here
@@ -69,7 +72,7 @@ or
 ?api_key=your_api_key_here
 ```
 
-**Rate limit:** 500 requests / day per key. Free, no credit card required.
+**Rate limit:** 500 requests / day per key. Resets every 24 hours.
 
 ---
 
@@ -273,48 +276,6 @@ curl "https://exposingepstein.com/backend/api/api_public.php?action=stats" \
     "total":  5804,
     "last_updated": "2026-04-16"
   }
-}
-```
-
----
-
-## Register for an API Key
-
-```
-POST ?action=register
-```
-
-**Body (JSON)**
-
-| Field         | Type   | Required | Description                         |
-|---------------|--------|----------|-------------------------------------|
-| `app_name`    | string | yes      | Name of your application            |
-| `email`       | string | yes      | Your contact email                  |
-| `origin_url`  | string | no       | Your website or app URL             |
-| `description` | string | no       | What you are building               |
-
-**Example**
-
-```bash
-curl -X POST "https://exposingepstein.com/backend/api/api_public.php?action=register" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "app_name":    "epstein-research-tool",
-    "email":       "researcher@example.com",
-    "origin_url":  "https://myresearchtool.com",
-    "description": "Building a public timeline of the Epstein case"
-  }'
-```
-
-**Response**
-
-```json
-{
-  "success": true,
-  "message": "API key issued. Include it in every request as X-Api-Key header.",
-  "api_key": "a3f8c2e1d9b047...",
-  "rate_limit": "500 requests/day",
-  "docs": "https://github.com/G103L3/epstein-files-api"
 }
 ```
 

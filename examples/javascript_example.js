@@ -5,7 +5,7 @@
  * Works in Node.js 18+ (native fetch) or any modern browser.
  */
 
-const API_KEY = "your_api_key_here"; // get one free: POST ?action=register
+const API_KEY = "your_api_key_here"; // get one: create an account at exposingepstein.com → Profile → Developer Account
 const BASE    = "https://exposingepstein.com/backend/api/api_public.php";
 
 async function apiGet(params) {

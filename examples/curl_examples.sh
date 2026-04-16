@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 # Epstein Files API — curl examples
 # Docs: https://github.com/G103L3/epstein-files-api
+#
+# To get an API key:
+#   1. Create a free account at https://exposingepstein.com
+#   2. Go to Profile → Settings → Developer Account
+#   3. Apply for a developer account and verify your email
+#   4. Open the Developer Portal and generate a key
 
 API_KEY="your_api_key_here"
 BASE="https://exposingepstein.com/backend/api/api_public.php"
-
-# ─── Register for an API key ─────────────────────────────────────────────────
-
-curl -s -X POST "$BASE?action=register" \
-  -H "Content-Type: application/json" \
-  -d '{"app_name":"my-tool","email":"you@example.com","origin_url":"https://mytool.com"}' \
-  | python3 -m json.tool
 
 # ─── Stats ───────────────────────────────────────────────────────────────────
 
